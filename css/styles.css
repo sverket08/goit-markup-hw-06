@@ -489,13 +489,27 @@ img{
     fill:var(--body-color);
 }
 
-
+/* підписка */
 .subscription{
-   display: block;
-   margin-left: 95px; 
+     margin-left: auto; 
 }
 .subscription-input{
-    display: flex;}
+    display: flex;
+}
+.inputfild {
+padding: 0 16px;
+width: 358px;
+height: 50px;
+color: var(--body-color);
+background: transparent;
+border: 1px solid rgba(255, 255, 255, 0.3);
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.15));
+    border-radius: 4px;
+    outline: none;
+}
+.inputfild:focus-within {
+    border-color: var(--accent-color);
+}
 
 .title-subscr{
     display: flex;
@@ -518,8 +532,20 @@ img{
     background: var(--accent-color);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
     border-radius: 4px;
-    border: none;    
-}
+    border: none; 
+    cursor: pointer;
+    fill: var(--white-color);
+    transition-property: background-color, color;
+    transition-duration: 250ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);}
+
+.button-subscr:hover,
+.button-subscr:focus{
+    color: var(--accent-color);
+    background-color: #188CE8;
+    fill: var(--accent-color);
+
+        }
 .text-subscr{
     margin-right: 10px;
     font-style: normal;
@@ -527,28 +553,16 @@ img{
     line-height: 1.87;
     letter-spacing: 0.06em;
     color: var(--body-color);
-
 }
 .footer-icon{
-    position: absolute;
     display: inline-block;
     top: 10px;
     bottom: 10px;
     right: 28px;
     fill: var(--body-color);
 }
-.input-fild{
-    padding-left: 16px;
-    padding-top:15px;
-    padding-bottom: 15px;
-    width: 358px;
-    height: 100%;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.15));
-    border-radius: 4px;
-    background: #2F303A;    
-}
-.input-fild::placeholder{
+
+.inputfild::placeholder{
     display: flex;
     align-items: center;
     letter-spacing: 0.03em;
@@ -610,7 +624,8 @@ img{
     transition-duration: 250ms;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
-.portfolio-list-link:hover,.portfolio-list-link:focus{
+.portfolio-list-link:hover,
+.portfolio-list-link:focus{
     box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12),
             0px 4px 4px rgba(0, 0, 0, 0.06),
             1px 4px 6px rgba(0, 0, 0, 0.16);
@@ -641,7 +656,8 @@ img{
     transition: transform 500ms linear;
 } 
 
-.portfolio-list-link:hover .card-text{
+.portfolio-list-link:hover .card-text,
+.portfolio-list-link:focus .card-text {
     transform: translateY(0);
 }
 .portfolio-text{
@@ -666,10 +682,10 @@ img{
 /* modal window */
 .modal-backdrop{
     position:fixed;
-    left: 0px;
-    top: 0px;
-    bottom: 0px;
-    right: 0px;
+    left: 0p;
+    top: 0;
+    width: 100%;
+    height: 100%;
     background: rgba(0, 0, 0, 0.2);
     transition: opacity 500ms, visibility 500ms;
 }
@@ -677,15 +693,17 @@ img{
     visibility: hidden;
     opacity: 0;
     pointer-events: none;
-
 }
-.modal{
-    width: 528px;
-    height: 581px;
+.modal-backdrop .is-hidden .modal{
+    transform: translate(-50%, -50%) scale(0.1);
+}
+.modal{ 
     position: absolute;
     left: 50%;
     top: 50%;
-    transform: translate(-50%, -50%) rotate(0);
+    transform: translate(-50%, -50%) scale(1);
+    width: 528px;
+    height: 581px;
     transition: transform 1000ms;
     background: var(--body-color);
     border-radius: 4px;
@@ -693,27 +711,40 @@ img{
         0px 1px 1px rgba(0, 0, 0, 0.14),
         0px 2px 1px rgba(0, 0, 0, 0.2); 
 }
-.modal-backdrop .is-hidden .modal {
-    transform: rotate(0.5tur);
-}
 .close-sings{
     position: relative;
 }
  .button-close{
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: 8px;
+    right: 8px;
     display: flex;
     padding: 10px 10px;
     border-radius: 50%;
     background: var(--body-color);
     border: 1px solid rgba(0, 0, 0, 0.1);
     cursor: pointer;
+    transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1),
+            border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    }
+ .button-close:hover,
+ .button-close:focus{
+  fill: var(--accent-color);
+    border-color: var(--accent-color);
  }
+.icon-close{
+    position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+}
  /* Заповнення модалки */
  .modal-form{
-    display: block;
-    padding: 40px;   
+    padding: 40px; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
  }
  .form-title{
     font-style: normal;
@@ -736,67 +767,139 @@ img{
     color: var(--text-color);
  }
  .input-wraper {
-    position: relative;
+     position: relative;
+     width: 100%;
+     display: flex;
+     flex-direction: column;
+     text-align: start;
  }
- .input-icon{
-    position: absolute;
-    left: 15px;
-    top:14px;
-    bottom: 14px;
-    fill: var(--title-color);
- }
- .modal-input{
-    padding-left: 42px;
-    width: 100%;
-    height: 40px;
-    background: var(--body-color);
-    border: 1px solid rgba(33, 33, 33, 0.2);
-    border-radius: 4px;
- }
- .modal-input:hover+.input-icon,
- .modal-input:focus-visited+.input-icon{
-    border:var(--accent-color);
+.input-wraper:focus-within .modal-label {
     color: var(--accent-color);
-    fill: var(--accent-color);
-
- }
-.modal-feedback{
-    padding: 12px 16px;
-    width: 100%;
-    height: 120px;
-    border: 1px solid rgba(33, 33, 33, 0.2);
-    border-radius: 4px;
 }
-::placeholder {
-    font-style: normal;
+.input-wraper:focus-within .modal-input {
+    border-color: var(--accent-color);
+}
+
+.input-wraper:focus-within .input-icon {
+    fill: var(--accent-color);
+}
+.modal-label{
+    margin: 0 0 4px 0;
     font-size: 12px;
     line-height: 1.17;
     letter-spacing: 0.01em;
-    color: rgba(117, 117, 117, 0.5);
+    color: var(--text-color);
 }
-.check-box{
-    margin-top: 20px;
-    margin-bottom: 30px;
+
+ .modal-input{
+    padding-left: 42px;
+    background: var(--body-color);
+    width: 100%;
+    border: 1px solid rgba(33, 33, 33, 0.2);
+    border-radius: 4px;
+    outline: none;
+
+ }
+  .input-icon {
+    position: absolute;
+    display: inline-block;
+    top: 50%;
+    left: 12px;
+    transform: translateY(-25%);
+    fill: var(--title-color);
+  }
+
+.input-fild{
+    margin: 0 0 10px 0;
+    padding: 0 42px;
+    height: 40px;
 }
+.fild-comment{
+    margin: 0 0 20px 0;
+    padding: 12px 16px;
+    height: 120px;
+    resize: none;
+}
+/* чекбокс */
 .label-custom{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 0 30px 0;
+    font-size: 14px;
+    line-height: 1.71;
+    letter-spacing: 0.03em;
+    color: var(--text-color);
+}
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    border: 0;
+    padding: 0;
+    white-space: nowrap;
+    clip-path: inset(100%);
+    clip: rect(0 0 0 0);
+    overflow: hidden;
+}
+.icon-check {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 16px;
+    height: 15px;
+    margin: 0 7px 0 0;
+    fill: var(--body-color);
+    border: 2px solid var(--main-color);
+    border-radius: 2px;
+}
+.label-custom .icon-check{
+    position: relative;
+    fill: transparent;
+}
+.checkbox:checked+.icon-check {
+    background-color: var(--accent-color);
+    fill: #FFFFFF var(--title-color);
+    border: transparent;
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.contract {
+    color: var(--accent-color);
+}
+.check-text{
     font-style: normal;
     font-size: 14px;
     line-height: 1.7;
     letter-spacing: 0.03em;
-    color:var(--text-color);
+    color: var(--text-color);
 }
-.modal-button{
+.modal-button {
     margin: 0 auto;
     display: block;
     width: 200px;
     height: 50px;
     background: #2196F3;
-    color:var(--body-color);
+    color: var(--body-color);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
     border-radius: 4px;
     border: none;
-    cursor: pointer;   
+    cursor: pointer;
+    transition-property: background-color ;
+    transition-duration: 250ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+.modal-button:hover,
+.modal-button:focus{
+ background-color: #188CE8;
+}
+
+ .fild-comment::placeholder {
+     font-style: normal;
+     font-size: 12px;
+     line-height: 1.17;
+     letter-spacing: 0.01em;
+     color: rgba(117, 117, 117, 0.5);
  }
- .contract{
-    color:var(--accent-color);
- }
+
