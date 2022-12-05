@@ -689,6 +689,7 @@ border: 1px solid rgba(255, 255, 255, 0.3);
     background: rgba(0, 0, 0, 0.2);
     transition: opacity 500ms, visibility 500ms;
 }
+
 .is-hidden{
     visibility: hidden;
     opacity: 0;
@@ -697,8 +698,9 @@ border: 1px solid rgba(255, 255, 255, 0.3);
 .modal-backdrop .is-hidden .modal{
     transform: translate(-50%, -50%) scale(0.1);
 }
-.modal{ 
+.modal {
     position: absolute;
+    padding: 40px;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%) scale(1);
@@ -709,18 +711,21 @@ border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 4px;
     box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12),
         0px 1px 1px rgba(0, 0, 0, 0.14),
-        0px 2px 1px rgba(0, 0, 0, 0.2); 
+        0px 2px 1px rgba(0, 0, 0, 0.2);
 }
-.close-sings{
-    position: relative;
-}
+
  .button-close{
+    font-family: inherit;
     position: absolute;
     top: 8px;
     right: 8px;
+    width: 30px;
+    height: 30px;
     display: flex;
-    padding: 10px 10px;
+    padding:0;
     border-radius: 50%;
+    justify-content: center;
+    align-items: center;
     background: var(--body-color);
     border: 1px solid rgba(0, 0, 0, 0.1);
     cursor: pointer;
@@ -732,15 +737,9 @@ border: 1px solid rgba(255, 255, 255, 0.3);
   fill: var(--accent-color);
     border-color: var(--accent-color);
  }
-.icon-close{
-    position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-}
+
  /* Заповнення модалки */
  .modal-form{
-    padding: 40px; 
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -822,14 +821,16 @@ border: 1px solid rgba(255, 255, 255, 0.3);
 }
 /* чекбокс */
 .label-custom{
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 0 0 30px 0;
-    font-size: 14px;
-    line-height: 1.71;
-    letter-spacing: 0.03em;
-    color: var(--text-color);
+    margin: 20px 0 30px 0;
+  
+}
+.checkbox{
+    top: 20px;
+    left: 30px;
 }
 .visually-hidden {
     position: absolute;
@@ -843,31 +844,35 @@ border: 1px solid rgba(255, 255, 255, 0.3);
     clip: rect(0 0 0 0);
     overflow: hidden;
 }
-.icon-check {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.icon-checkbox {
     width: 16px;
     height: 15px;
     margin: 0 7px 0 0;
-    fill: var(--body-color);
+    /* fill: var(--body-color); */
     border: 2px solid var(--main-color);
     border-radius: 2px;
-}
-.label-custom .icon-check{
-    position: relative;
-    fill: transparent;
-}
-.checkbox:checked+.icon-check {
-    background-color: var(--accent-color);
-    fill: #FFFFFF var(--title-color);
-    border: transparent;
-    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+
 }
 
-.contract {
-    color: var(--accent-color);
+.agree-icon {
+    display: block;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
 }
+
+
+.check-input:checked+.icon-checkbox {
+    background-color: #2196F3;
+
+}
+
+.check-input:checked+.icon-checkbox .agree-icon {
+    opacity: 1;
+    fill: #fff;
+}
+
 .check-text{
     font-style: normal;
     font-size: 14px;
@@ -875,7 +880,12 @@ border: 1px solid rgba(255, 255, 255, 0.3);
     letter-spacing: 0.03em;
     color: var(--text-color);
 }
+.contract {
+    color: var(--accent-color);
+}
+/* кнопка */
 .modal-button {
+    font-family: inherit;
     margin: 0 auto;
     display: block;
     width: 200px;
