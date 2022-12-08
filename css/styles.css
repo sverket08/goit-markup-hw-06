@@ -823,7 +823,7 @@ border: 1px solid rgba(255, 255, 255, 0.3);
      height: 120px;
      resize: none;
  }
- .form-comment:placeholder{
+ .form-comment::placeholder{
     font-size: 12px;
     line-height: 1.17;
     letter-spacing: 0.01em;
